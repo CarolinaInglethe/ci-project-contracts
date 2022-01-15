@@ -5,7 +5,7 @@ module.exports = async (username, password) => {
   if (!username || !password) {
     return {
       err: {
-        message: "Você deve definir email e senha"
+        message: "Você deve definir nome e senha"
       }
     };
   };

@@ -11,8 +11,6 @@ module.exports = async (req, res, _next) => {
     const { token } = login;
     res.token = token;
   
-    res.setHeader('Content-Type', 'application/json');
-
     return res.status(200).json(login);
 
   } catch (e) {
