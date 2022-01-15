@@ -1,0 +1,41 @@
+use('contractsFlexge');
+db.companies.insertMany([
+  {_id: 1, name: "Geração Fle"},
+  {_id: 2, name: "Terra Xa"},
+  {_id: 3, name: "Invent Qui"},
+  {_id: 4, name: "Ink Ing"},
+  {_id: 5, name: "Blue Planet Mar"},
+  {_id: 6, name: "DavP Porto"},
+  {_id: 7, name: "Pedr Fox"},
+  {_id: 8, name: "DreamCatcher Gus"},
+  {_id: 9, name: "RlxL Landia"},
+  {_id: 10, name: "FloQ Xin"},
+]);
+
+use('contractsFlexge');
+db.contracts.insertOne({
+    documentNumber: 000000699,
+    socialReason: 1,
+    company: 1,
+    distributor: 1,
+    adress: {
+      country: "EUA",
+      state: "Lans",
+      city: "misticFals",
+      address: "rua vertice",
+      distric: "Nort",
+      number:5,
+      zipCode:555,
+    },
+    contact: {
+      email: "gushab@hotmail.com",
+      phone: 15555,
+    },
+    dates: {
+      contractStarts: 01/01/2020,
+      contractsEnds: 05/05/2020,
+      dueDay: 05/05/2020
+    },
+  });
+
+
