@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Login extends Component {
-  render() {
+function Login() {
     return (
       <div>
         {/* <form onSubmit={this.handleSubmit} className="container--form">
@@ -18,7 +17,6 @@ class Login extends Component {
         <h1>Oi</h1>
       </div> 
     );
-  }
 }
 
 export default Login;
