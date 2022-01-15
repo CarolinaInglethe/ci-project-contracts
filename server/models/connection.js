@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const connection = mongoose.createConnection(
-  "mongodb://localhost:27017/test-mongoose-2"
+  "mongodb://localhost:27017/contractsFlexge"
 );
 
 module.exports = connection;
