@@ -12,5 +12,13 @@ module.exports = async (data) => {
 
     const createdContract = await modelsCreateContract(data);
 
+    if (!createdContract) {
+      return {
+        err: {
+          message: "Houve um erro interno ao criar o contrato"
+        }
+      }
+    }
+
     return createdContract;
 };
