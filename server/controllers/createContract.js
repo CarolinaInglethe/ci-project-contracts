@@ -7,5 +7,5 @@ module.exports = async (req,res) => {
       return res.status(401).json(createContract)
     }
 
-    return createContract;
+    return res.status(200).json(createContract);
 };
