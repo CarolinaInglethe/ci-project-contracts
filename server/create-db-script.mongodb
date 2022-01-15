@@ -24,10 +24,10 @@ db.contracts.insertOne({
       city: "misticFals",
       address: "rua vertice",
       distric: "Nort",
-      number:5 
+      number:5,
+      zipCode:555,
     },
     contact: {
-      zipCode:555,
       email: "gushab@hotmail.com",
       phone: 15555,
     },
