@@ -8,20 +8,20 @@ const contractsSchema = new mongoose.Schema({
   company: { type: Number, require: true },
   distributor: { type: Number, require: true},
   adress: {
-    zipCode: { type: Number },
     country: { type: String, require: true },
     state:  { type: String, require: true } ,
     city: { type: String, require: true },
     address: { type: String},
     distric: { type: String },
-    number: { type: Number }
+    number: { type: Number },
+    zipCode: { type: Number },
   },
   contact: {
     email: { type: String, require: true },
     phone: { type: Number, require: true },
   },
   dates: {
-    contractStarts: { type: Date },
+    contractStarts: { type: Date, require: true },
     contractsEnds: { type: Date, require: true },
     dueDay: { type: Date, require: true },
   }
