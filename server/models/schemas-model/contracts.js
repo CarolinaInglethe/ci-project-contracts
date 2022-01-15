@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connection = require('./connection');
+const connection = require('../connection');
 
 const contractsSchema = new mongoose.Schema({
     // criar Schema/Collection , determinar campos e tipos:
