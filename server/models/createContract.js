@@ -2,7 +2,7 @@ const Contracts = require('./schemas-model/contracts');
 
 module.exports = async (data) => {
 
-    const createdContract = await Contracts.insertOne({
+    const createdContract = await Contracts.create({
       documentNumber: data.documentNumber,
       socialReason: data.socialReason,
       company: data.company,

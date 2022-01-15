@@ -6,6 +6,6 @@ const contractsSchema = new mongoose.Schema({
    name: { type: String, require: true }
 });
 
-const Companies = connection.model('contracts', contractsSchema);
+const Companies = connection.model('companies', contractsSchema);
 
 module.exports = Companies;
