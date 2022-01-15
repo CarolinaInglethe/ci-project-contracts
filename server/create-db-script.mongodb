@@ -38,6 +38,4 @@ db.contracts.insertOne({
     },
   });
 
-// use('contractsFlexge');
-// db.contracts.find();
 
