@@ -1,24 +1,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const controllersLogin = require('./controllers/login');
-const constrollersGetContracts = require('./controllers/getContracts');
-const controllersCreateContract = require('./controllers/createContract');
+const pino = require('express-pino-logger')();
 
-const auth = require('./middlewares/auth')
+const controllersLogin = require('./controllers/login');
+// const constrollersGetContracts = require('./controllers/getContracts');
+// const controllersCreateContract = require('./controllers/createContract');
+
+// const auth = require('./middlewares/auth')
 require('dotenv').config();
 
 
 const PORT = process.env.PORT;
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true })); // trabalhar com formulario/html
-app.use(bodyParser.json()); // trabalhar com json
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(pino);
 
 
 // -----
 app.post('/login', controllersLogin);
-app.get('/contracts', auth, constrollersGetContracts);
-app.post('/createContract', controllersCreateContract)
+// app.get('/contracts', auth, constrollersGetContracts);
+// app.post('/createContract', auth , controllersCreateContract);
+
+// app.get('/api/greeting', (req, res) => {
+//   const name = req.query.name || 'World';
+//   res.setHeader('Content-Type', 'application/json');
+//   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
+// });
 
 // -----
 
