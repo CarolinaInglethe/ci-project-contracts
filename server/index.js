@@ -19,7 +19,7 @@ app.use(pino);
 
 
 // -----
-app.post('/login', controllersLogin);
+app.post('/', controllersLogin);
 app.get('/contracts', auth, constrollersGetContracts);
 app.post('/createContract', auth , controllersCreateContract);
 
