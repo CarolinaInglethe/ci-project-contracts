@@ -1,20 +1,31 @@
-import React from "react";
+import React from 'react';
 
 function Login() {
     return (
-      <div>
-        {/* <form onSubmit={this.handleSubmit} className="container--form">
-          <label htmlFor="name">Enter your name: </label>
-          <input
-              id="name"
-              type="text"
-              value={this.state.name}
-              onChange={this.handleChange}
-          />
-          <button type="submit">Submit</button>
-        </form> */}
+      <div className="container-login">
 
-        <h1>Oi</h1>
+        <h1> Login </h1>
+          <input
+            className="input-login"
+            name="username"
+            type="text"
+            placeholder="Usename"
+          />
+          <input 
+            className="input-login"
+            name="password"
+            type="password"
+            placeholder="Password" 
+          />
+
+          <button
+          className="input-login-button"
+            type="submit"
+
+          >
+            Entrar
+          </button>
+
       </div> 
     );
 }
