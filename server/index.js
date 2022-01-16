@@ -7,6 +7,7 @@ const controllersLogin = require('./controllers/login');
 const constrollersGetContracts = require('./controllers/getContracts');
 const controllersCreateContract = require('./controllers/createContract');
 const controllersUpdateContract = require('./controllers/updateContract');
+const controllersDeleteContract = require('./controllers/deleteContract');
 
 const auth = require('./middlewares/auth')
 require('dotenv').config();
@@ -25,7 +26,8 @@ app.use(cors());
 app.post('/', controllersLogin);
 app.get('/contracts', auth, constrollersGetContracts);
 app.post('/createContract', auth , controllersCreateContract);
-app.put('/create/:id', controllersUpdateContract )
+app.put('/contracts/:id', controllersUpdateContract );
+app.delete('/contracts/:id', controllersDeleteContract);
 
 // app.get('/api/greeting', (req, res) => {
 //   const name = req.query.name || 'World';
