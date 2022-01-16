@@ -6,6 +6,7 @@ const cors = require('cors');
 const controllersLogin = require('./controllers/login');
 const constrollersGetContracts = require('./controllers/getContracts');
 const controllersCreateContract = require('./controllers/createContract');
+const controllersUpdateContract = require('./controllers/updateContract');
 
 const auth = require('./middlewares/auth')
 require('dotenv').config();
@@ -24,6 +25,7 @@ app.use(cors());
 app.post('/', controllersLogin);
 app.get('/contracts', auth, constrollersGetContracts);
 app.post('/createContract', auth , controllersCreateContract);
+app.put('/create/:id', controllersUpdateContract )
 
 // app.get('/api/greeting', (req, res) => {
 //   const name = req.query.name || 'World';
