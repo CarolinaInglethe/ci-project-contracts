@@ -1,13 +1,11 @@
 body {
-    background-image: linear-gradient(200deg, #ace4ff 0, #81cbfbf3 25%, #50b9ff 50%, #0589db 75%, #0379da 100%);
+    background: linear-gradient(200deg, #ace4ff 0, #81cbfbf3 25%, #50b9ff 50%, #0589db 75%, #0379da 100%);
 }
 
 .container-login {
-  background-color: #d6e0e659;
+  background-color: #ffffff60;
   display: flex;
   flex-direction: column;
-  /* margin: 200px 700px;
-  padding: 60px 5px; */
   margin: 11% 30%;
   padding: 5%;
 }
@@ -42,5 +40,42 @@ body {
 }
 
 .input-login-button:hover {
-    background-color: #1668acbe;
+  background-color: #1668acbe;
+  color: aliceblue;
+}
+
+.container-contracts {
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.774);
+}
+
+.container-contracts-header {
+  background-color: #ffffffc4;
+  border: 0px;
+  border-radius: 2px;
+  display: flex;
+  font-size: large;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.route-link {
+  background-color: #0e7bd46b;
+  border: 0px;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.808);
+  padding: 6px;
+  text-decoration-line: none;
+}
+
+.route-link:hover {
+  background-color: #1669acaf;
+  border: 0px;
+  color: aliceblue;
+}
+
+.conteiner-contracts-results {
+  text-align: center;
+  padding: 15%;
+  padding-bottom: 25%;
 }

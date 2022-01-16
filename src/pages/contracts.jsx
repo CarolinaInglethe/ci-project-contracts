@@ -40,12 +40,9 @@ function Contracts() {
     <div className="container-contracts">
 
       <header className="container-contracts-header">
-        <Link to="/" >Sair</Link>
+        <Link to="/"  className="route-link">Sair</Link>
+        <Link to="/createContract" className="route-link">+ New contract</Link>
       </header>
-
-      <nav className="container-contracts-nav">
-        <Link to="/createContract" >+ New contract</Link>
-      </nav>
 
       <div className="conteiner-contracts-results">
         {
