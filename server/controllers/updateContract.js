@@ -2,7 +2,9 @@ const servicesUpdateContract = require('../services/updateContract')
 
 module.exports = async (req,res) => {
     try {
-        const updateContract = await servicesUpdateContract();
+        const { id } = req.params;
+        const data = req.body
+        const updateContract = await servicesUpdateContract(id, data);
     
         if (updateContract.err) {
           return res.status(401).json(updateContract)
