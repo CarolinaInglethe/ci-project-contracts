@@ -9,6 +9,7 @@ import {
 
 import InfoProvider from './context/infoProvider';
 import Login from "./pages/login"
+import Contracts from "./pages/contracts"
 
 
 function App() {
@@ -31,14 +32,10 @@ function App() {
 
       <Routes> 
         <Route path="/" element={ <Login/> }/>
+        <Route path="/contracts" element={ <Contracts/> } />
       </Routes>
       
-
-      {/* <Route path="/contracts">
-        <Contracts />
-      </Route>
-
-      <Route path="/createContract">
+      {/* <Route path="/createContract">
         <CreateContract/>
       </Route> */}
 

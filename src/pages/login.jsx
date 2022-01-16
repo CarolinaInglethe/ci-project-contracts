@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
-// import InfoContext from '../context/infoContext';
+import InfoContext from '../context/infoContext';
 
 function Login() {
-  // const { 
-  //   infoUserContext, 
-  //   setInfoUserContext 
-  // } = useContext(InfoContext)
-
   const [ userName, setUserName ] = useState('');
   const [ password, setPassword ] = useState('');
+  const navigate = useNavigate();
+
+  // informaçoes de usuario logado no context:
+  const { 
+    infoUserContext, 
+    setInfoUserContext 
+  } = useContext(InfoContext)
 
   const handleChangeUserName = ({ target }) => {
     setUserName(target.value)
@@ -27,9 +30,16 @@ function Login() {
 
     const resOfRequest = await axios.post('http://localhost:3001',  bodyUser )
       .then((res) => res.data)
-      .catch((err) => "erro na requisiçao")
+      .catch((err) => "Houve um erro na requisição");
 
-    return console.log(resOfRequest)
+    if (!resOfRequest.token) {
+      return alert("Nome de usuario ou senha incorreto");
+    };
+
+    setInfoUserContext(infoUserContext);
+    
+    // react router v6 usa navegate para navegar de pagina:
+    return navigate('/contracts')
   }
 
     return (
