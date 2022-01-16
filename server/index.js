@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
+const cors = require('cors');
 
 const controllersLogin = require('./controllers/login');
 const constrollersGetContracts = require('./controllers/getContracts');
@@ -16,6 +17,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(pino);
+app.use(cors());
 
 
 // -----

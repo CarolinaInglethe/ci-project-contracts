@@ -7,12 +7,17 @@ import {
   Route
 } from "react-router-dom";
 
+import InfoProvider from './context/infoProvider';
 import Login from "./pages/login"
+
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <ul>
+
+      <InfoProvider>
+
+        {/* <ul>
         <li>
           <Link to="/">Login</Link>
         </li>
@@ -36,6 +41,8 @@ function App() {
       <Route path="/createContract">
         <CreateContract/>
       </Route> */}
+
+      </InfoProvider>
 
     </BrowserRouter> 
   );
