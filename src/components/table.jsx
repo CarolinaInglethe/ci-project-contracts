@@ -8,38 +8,51 @@ function Table() {
   if (allContracts.length < 1) {
     return <h3>Carregando Tabela...</h3>;
   }
+
+  const columns = [
+    "Document Number", "Social Reason",
+    "Company", "Distributor", "Actions"
+  ];
   
   return (
-    <div>
+    <div className="container-table">
       <p>Contratos</p>
       <table>
         <thead>
           <tr>
             {
               // popula as colunas com o nome das chaves do contrato na posiçao 0
-              Object.keys(allContracts[0]).map((columnContract, index) => (
-                <th key={ index }>{columnContract}</th>
+              columns.map((columnName, index) => (
+                <th key={ index }>{columnName}</th>
               ))
             }
           </tr>
         </thead>
-        {/* <tbody>
+        <tbody>
           {
             // passa por cada contrato
             allContracts.map((contract, index0) => (
               <tr key={ index0 }>
-                {
-                  // passa por cada chave/valor do contrato da vez
-                  Object.values(contract).map((info, index1) => (
-                    <td key={ index1 }>
-                      {info}
-                    </td>
-                  ))
-                }
+                <td key={ index0 + 1 }>
+                    {contract.documentNumber}
+                </td>
+                <td  key={ index0 + 2 }>
+                    { contract.socialReason }
+                </td>
+                <td>
+                    { contract.company }
+                </td>
+                <td>
+                    { contract.distributor }
+                </td>
+                <td>
+                  <button>Editar</button>
+                  <button>Apagar</button>
+                </td>
               </tr>
             ))
           }
-        </tbody> */}
+        </tbody>
       </table>
     </div>
   );
