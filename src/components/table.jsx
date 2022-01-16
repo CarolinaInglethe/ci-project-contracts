@@ -13,6 +13,14 @@ function Table() {
     "Document Number", "Social Reason",
     "Company", "Distributor", "Actions"
   ];
+
+  const handleClickUpdate = ({ target }) => {
+      
+  };
+
+  const handleClickDelete = ({ target }) => {
+
+  }
   
   return (
     <div className="container-table">
@@ -46,8 +54,18 @@ function Table() {
                     { contract.distributor }
                 </td>
                 <td>
-                  <button>Editar</button>
-                  <button>Apagar</button>
+                  <button 
+                    value={contract._id } 
+                    onClick={ handleClickUpdate } 
+                  >
+                    Editar
+                  </button>
+                  <button 
+                    value={ contract._id } 
+                    onClick={ handleClickDelete }
+                    >
+                    Apagar
+                  </button>
                 </td>
               </tr>
             ))
