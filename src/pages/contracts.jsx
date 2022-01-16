@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import InfoContext from '../context/infoContext';
 import Table from '../components/table';
+import FormSearch from '../components/formSearch';
 
 
 function Contracts() {
@@ -45,14 +46,16 @@ function Contracts() {
       </header>
 
       <div className="conteiner-contracts-results">
+        
+        <FormSearch/>
+
         {
           allContracts.length < 1
           ? <h1>Carregando página...</h1>
           : <Table/>
         }
       </div>
-     
-      
+
     </div>
   );
 };
