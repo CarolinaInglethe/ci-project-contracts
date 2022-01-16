@@ -60,7 +60,7 @@ body {
 }
 
 .route-link {
-  background-color: #0e7bd46b;
+  background-color: #0e7bd452;
   border: 0px;
   border-radius: 5px;
   color: rgba(0, 0, 0, 0.808);
@@ -79,7 +79,7 @@ body {
 }
 
 .container-table {
-  padding-top: 5%;
+  padding-top: 1%;
   padding-bottom: 16%;
   text-align: center;
 }
@@ -89,7 +89,7 @@ table {
   border: 1px rgba(0, 0, 0, 0.596) solid;
   border-radius: 4px;
   font-size: large;
-  margin-left: 27%;
+  margin-left: 30%;
   padding: 1%;
 }
 
@@ -101,4 +101,22 @@ table th {
 table td {
   border: 1px rgba(0, 0, 0, 0.534) solid;
   padding: 10px;
+}
+
+.container-form-search {
+  display: flex;
+  font-size: large;
+  justify-content: space-around;
+  padding-top: 3%;
+}
+
+.container-form-search label {
+  margin: 10px;
+}
+
+.container-form-search input, select, button {
+  border: 1px rgba(0, 0, 0, 0.39) solid;
+  border-radius: 3px;
+  margin: 3px;
+  padding: 4px;
 }
