@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useContext} from 'react';
 import InfoContext from '../context/infoContext';
 
@@ -15,12 +16,16 @@ function Table() {
   ];
 
   const handleClickUpdate = ({ target }) => {
-      
+    axios.put(`http://localhost:3001/contracts/${target.value}`)
+    .then((res) => res)
+    .catch((err) => console.log("err"))
   };
 
   const handleClickDelete = ({ target }) => {
-
-  }
+    axios.delete(`http://localhost:3001/contracts/${target.value}`)
+    .then((res) => res)
+    .catch((err) => console.log("err"))
+  };
   
   return (
     <div className="container-table">
