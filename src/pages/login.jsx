@@ -9,9 +9,8 @@ function Login() {
   const navigate = useNavigate();
 
   // informaçoes de usuario logado no context:
-  const { 
-    infoUserContext, 
-    setInfoUserContext 
+  const {  
+    setInfoUserContext
   } = useContext(InfoContext)
 
   const handleChangeUserName = ({ target }) => {
@@ -36,10 +35,9 @@ function Login() {
       return alert("Nome de usuario ou senha incorreto");
     };
 
-    setInfoUserContext(infoUserContext);
-    
+    setInfoUserContext(resOfRequest);
     // react router v6 usa navegate para navegar de pagina:
-    return navigate('/contracts')
+    return navigate('/contracts');
   }
 
     return (
