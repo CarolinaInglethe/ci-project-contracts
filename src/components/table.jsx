@@ -16,7 +16,7 @@ function Table() {
   
   return (
     <div className="container-table">
-      <p>Contratos</p>
+      <h3>Contratos</h3>
       <table>
         <thead>
           <tr>
