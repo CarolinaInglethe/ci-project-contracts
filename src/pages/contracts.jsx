@@ -1,16 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import InfoContext from '../context/infoContext';
-import { Link } from 'react-router-dom';
+import Table from '../components/table';
+
 
 function Contracts() {
   const { infoUserContext } = useContext(InfoContext);
-  const [allContracts, setAllContracts] = useState([]);
+
+  const { 
+    allContracts, setAllContracts 
+  } = useContext(InfoContext);
   
   // função para requisiçao authentica e pega contratos: 
   const requestContracts = async () => {
     const headerAuth = { 
-        headers: { authorization: infoUserContext.token } 
+      headers: { 
+        authorization: infoUserContext.token 
+      } 
     }
 
     const getContracts = await axios
@@ -19,7 +26,7 @@ function Contracts() {
     .catch((err) => null)
 
     if (!getContracts) return "Falha na requisiçao"
-    
+
     setAllContracts(getContracts)
     return console.log(allContracts)
   };
@@ -43,10 +50,8 @@ function Contracts() {
       <div className="conteiner-contracts-results">
         {
           allContracts.length < 1
-          ? <h1>Carregando...</h1>
-          : allContracts.map((contract) => {
-            return <h1>{ contract.documentNumber }</h1>
-           })
+          ? <h1>Carregando página...</h1>
+          : <Table/>
         }
       </div>
      

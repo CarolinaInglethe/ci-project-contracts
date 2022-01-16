@@ -5,10 +5,13 @@ import InfoContext from './infoContext';
 // funçao apenas  gerenciar um estado e retornar um Provider:
 function InfoProvider({ children }) {
   const [ infoUserContext, setInfoUserContext ] = useState('');
+  const [allContracts, setAllContracts] = useState([]);
 
   const contextValues = {
     infoUserContext,
     setInfoUserContext,
+    allContracts,
+    setAllContracts,
   }
 
   return (
