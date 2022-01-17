@@ -4,7 +4,7 @@ import InfoContext from '../context/infoContext';
 
 
 function Table() {
-  const { allContracts } = useContext(InfoContext);
+  const { allContracts, infoUserContext } = useContext(InfoContext);
   
   if (allContracts.length < 1) {
     return <h3>Carregando Tabela...</h3>;
@@ -15,16 +15,31 @@ function Table() {
     "Company", "Distributor", "Actions"
   ];
 
+  // incompleto
   const handleClickUpdate = ({ target }) => {
     axios.put(`http://localhost:3001/contracts/${target.value}`)
     .then((res) => res)
     .catch((err) => console.log("err"))
   };
 
+  // progresso
   const handleClickDelete = ({ target }) => {
-    axios.delete(`http://localhost:3001/contracts/${target.value}`)
-    .then((res) => res)
-    .catch((err) => console.log("err"))
+    const deletedContract = axios.delete(`http://localhost:3001/contracts/${target.value}`)
+    .then((res) => res.data)
+    .catch((err) => "err")
+
+    // const headerAuth = { 
+    //   headers: { 
+    //     authorization: infoUserContext.token 
+    //   } 
+    // }
+
+    // const allcontracts = axios.get('http://localhost:3001/contracts', headerAuth)
+    // .then((res) => res.data)
+    // .catch((err) => console.log("err"))
+
+    return console.log(deletedContract)
+    
   };
   
   return (
@@ -60,12 +75,14 @@ function Table() {
                 </td>
                 <td>
                   <button 
+                    type="button"
                     value={contract._id } 
                     onClick={ handleClickUpdate } 
                   >
                     Editar
                   </button>
                   <button 
+                    type="button"
                     value={ contract._id } 
                     onClick={ handleClickDelete }
                     >
