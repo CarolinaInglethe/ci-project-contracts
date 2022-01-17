@@ -14,7 +14,7 @@ function Contracts() {
   } = useContext(InfoContext);
   
   // função para requisiçao authentica e pega contratos: 
-  const requestContracts = async () => {
+  const requestAllContracts = async () => {
     const headerAuth = { 
       headers: { 
         authorization: infoUserContext.token 
@@ -34,7 +34,7 @@ function Contracts() {
   // -------
 
   useEffect(() => {
-    requestContracts()
+    requestAllContracts()
   }, [])
 
   return (
@@ -46,14 +46,8 @@ function Contracts() {
       </header>
 
       <div className="conteiner-contracts-results">
-        
         <FormSearch/>
-
-        {
-          allContracts.length < 1
-          ? <h1>Carregando página...</h1>
-          : <Table/>
-        }
+        <Table/>
       </div>
 
     </div>
