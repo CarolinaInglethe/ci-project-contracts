@@ -9,7 +9,7 @@ const contractsSchema = new mongoose.Schema({
   company: { 
     type: mongoose.Schema.ObjectId,
     ref: Companies,
-    index: true 
+    index: true,
   },
   distributor: { type: Number },
   adress: {
