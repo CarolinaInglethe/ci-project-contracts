@@ -1,59 +1,48 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      greeting: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
-  handleChange(event) {
-    this.setState({ name: event.target.value });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
-      .then(response => response.json())
-      .then(state => this.setState(state));
-  }
+import InfoProvider from './context/infoProvider';
+import Login from "./pages/login"
+import Contracts from "./pages/contracts"
 
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="name">Enter your name: </label>
-            <input
-              id="name"
-              type="text"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            <button type="submit">Submit</button>
-          </form>
-          <p>{this.state.greeting}</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  };
-}
+function App() {
+  return (
+    <BrowserRouter>
+
+      <InfoProvider>
+
+        {/* <ul>
+        <li>
+          <Link to="/">Login</Link>
+        </li>
+        <li>
+          <Link to="/contracts">Contratos</Link>
+        </li>
+        <li>
+          <Link to="/createContract">Criar contrato</Link>
+        </li>
+      </ul> */}
+
+      <Routes> 
+        <Route path="/" element={ <Login/> }/>
+        <Route path="/contracts" element={ <Contracts/> } />
+      </Routes>
+      
+      {/* <Route path="/createContract">
+        <CreateContract/>
+      </Route> */}
+
+      </InfoProvider>
+
+    </BrowserRouter> 
+  );
+};
 
 export default App;

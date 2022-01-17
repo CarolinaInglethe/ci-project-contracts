@@ -1,0 +1,122 @@
+body {
+    background: linear-gradient(200deg, #ace4ff 0, #81cbfbf3 25%, #50b9ff 50%, #0589db 75%, #0379da 100%);
+}
+
+.container-login {
+  background-color: #ffffff60;
+  display: flex;
+  flex-direction: column;
+  margin: 11% 30%;
+  padding: 5%;
+}
+
+.input-login {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
+  border-bottom: 1px rgba(0, 0, 0, 0.472) solid;
+  font-size: large;
+  margin: 10px;
+  padding: 5px;
+}
+
+.input-login:hover {
+  border-bottom:  1px rgba(0, 0, 0, 0.877) solid;
+}
+.input-login:active {
+  box-shadow: 0;
+  border: 0px
+}
+
+.input-login-button {
+  background-color: #0e7bd49d;
+  border: 0px;
+  border-radius: 4px;
+  color: rgba(16, 16, 17, 0.856);
+  font-size: large;
+  margin-top: 50px;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding: 7px;
+}
+
+.input-login-button:hover {
+  background-color: #1668acbe;
+  color: aliceblue;
+}
+
+.container-contracts {
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.774);
+}
+
+.container-contracts-header {
+  background-color: #ffffffc4;
+  border: 0px;
+  border-radius: 2px;
+  display: flex;
+  font-size: large;
+  justify-content: space-around;
+  padding: 25px;
+}
+
+.route-link {
+  background-color: #0e7bd452;
+  border: 0px;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.808);
+  padding: 6px;
+  text-decoration-line: none;
+}
+
+.route-link:hover {
+  background-color: #1669acaf;
+  border: 0px;
+  color: aliceblue;
+}
+
+.conteiner-contracts-results {
+  text-align: center;
+}
+
+.container-table {
+  padding-top: 1%;
+  padding-bottom: 16%;
+  text-align: center;
+}
+
+table {
+  background-color: rgba(240, 248, 255, 0.712);
+  border: 1px rgba(0, 0, 0, 0.596) solid;
+  border-radius: 4px;
+  font-size: large;
+  margin-left: 30%;
+  padding: 1%;
+}
+
+table th {
+  border: 1px rgba(0, 0, 0, 0.219) solid;
+  padding: 10px;
+}
+
+table td {
+  border: 1px rgba(0, 0, 0, 0.534) solid;
+  padding: 10px;
+}
+
+.container-form-search {
+  display: flex;
+  font-size: large;
+  justify-content: space-around;
+  padding-top: 3%;
+}
+
+.container-form-search label {
+  margin: 10px;
+}
+
+.container-form-search input, select, button {
+  border: 1px rgba(0, 0, 0, 0.39) solid;
+  border-radius: 3px;
+  margin: 3px;
+  padding: 4px;
+}

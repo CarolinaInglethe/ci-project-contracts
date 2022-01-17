@@ -1,1 +1,13 @@
-https://www.twilio.com/blog/configure-um-app-react-com-um-proxy-de-servidor-node-js
+  1° - npm install para installar dependencias;
+  2° - sudo service mongod start (conecte mongodb);
+  3° - pasta server / arquivo create-db...  - rodar script
+ para gerar banco na maquina;
+  4° - {
+    npm start - roda apenas react
+    npm run dev - roda o react e o server juntos (preferencia)
+  }
+
+  5° -  para dar login digite  {
+    username = Flexge
+    password = 123456
+  }
