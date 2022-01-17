@@ -2,9 +2,9 @@ const modelsDeleteContract = require('../models/deleteContract')
 
 module.exports = async (id) => {
 
-    const createdContract = await modelsDeleteContract(id);
+    const deletedContract = await modelsDeleteContract(id);
 
-    if (!createdContract) {
+    if (!deletedContract) {
       return {
         err: {
           message: "erro interno ao deletar o contrato"
@@ -12,5 +12,5 @@ module.exports = async (id) => {
       }
     }
 
-    return createdContract;
+    return deletedContract;
 };
