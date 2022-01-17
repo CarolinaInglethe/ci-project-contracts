@@ -120,3 +120,33 @@ table td {
   margin: 3px;
   padding: 4px;
 }
+
+.container-create-contract form {
+  background-color: rgba(240, 248, 255, 0.842);
+  border-radius: 3px;
+  font-size: large;
+  margin: 1px 10%;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  padding: 60px;
+}
+
+.container-create-contract label input {
+  margin: 10px;
+  padding: 4px;
+}
+
+.container-create-contract footer {
+  padding-top: 1%;
+  padding-bottom: 7%;
+}
+
+.button-create-contract {
+  font-size: large;
+  padding: 10px;
+}
+
+.button-create-contract:hover {
+  background-color: rgba(10, 10, 105, 0.685);
+  color: aliceblue;
+}

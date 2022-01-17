@@ -81,7 +81,7 @@ function FormCreateContract() {
 
       </form>
       <footer>
-        <button type="button">Criar</button>
+        <button className="button-create-contract" type="button">Criar</button>
       </footer>
     </div>
   );
