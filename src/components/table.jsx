@@ -4,42 +4,40 @@ import InfoContext from '../context/infoContext';
 
 
 function Table() {
-  const { allContracts, infoUserContext } = useContext(InfoContext);
+  const { allContracts, setAllContracts, infoUserContext } = useContext(InfoContext);
   
-  if (allContracts.length < 1) {
-    return <h3>Carregando Tabela...</h3>;
-  }
-
+ 
   const columns = [
     "Document Number", "Social Reason",
     "Company", "Distributor", "Actions"
   ];
 
-  // incompleto
-  const handleClickUpdate = ({ target }) => {
-    axios.put(`http://localhost:3001/contracts/${target.value}`)
-    .then((res) => res)
-    .catch((err) => console.log("err"))
-  };
+ 
+  // const handleClickUpdate = ({ target }) => {
+  //   axios.put(`http://localhost:3001/contracts/${target.value}`)
+  //   .then((res) => res)
+  //   .catch((err) => console.log("err"))
 
-  // progresso
-  const handleClickDelete = ({ target }) => {
-    const deletedContract = axios.delete(`http://localhost:3001/contracts/${target.value}`)
+  //   console.log("update")
+  // };
+
+  // botao deletar:
+  const handleClickDelete = async ({ target }) => {
+    const deletedContract = await axios.delete(`http://localhost:3001/contracts/${target.value}`)
     .then((res) => res.data)
-    .catch((err) => "err")
+    .catch((err) => "err delete")
 
-    // const headerAuth = { 
-    //   headers: { 
-    //     authorization: infoUserContext.token 
-    //   } 
-    // }
+    const headerAuth = { 
+      headers: { 
+        authorization: infoUserContext.token 
+      } 
+    }
 
-    // const allcontracts = axios.get('http://localhost:3001/contracts', headerAuth)
-    // .then((res) => res.data)
-    // .catch((err) => console.log("err"))
+    const requestAllContracts = await axios.get('http://localhost:3001/contracts', headerAuth)
+    .then((res) => res.data)
+    .catch((err) => [])
 
-    return console.log(deletedContract)
-    
+    setAllContracts(requestAllContracts);
   };
   
   return (
@@ -74,13 +72,13 @@ function Table() {
                     { contract.distributor }
                 </td>
                 <td>
-                  <button 
+                  {/* <button 
                     type="button"
                     value={contract._id } 
                     onClick={ handleClickUpdate } 
                   >
                     Editar
-                  </button>
+                  </button> */}
                   <button 
                     type="button"
                     value={ contract._id } 
