@@ -9,7 +9,7 @@ function Table() {
  
   const columns = [
     "Document Number", "Social Reason",
-    "Company", "Distributor", "Actions"
+    "Company", "Actions"
   ];
 
  
@@ -67,9 +67,6 @@ function Table() {
                 </td>
                 <td>
                     { contract.company }
-                </td>
-                <td>
-                    { contract.distributor }
                 </td>
                 <td>
                   {/* <button 

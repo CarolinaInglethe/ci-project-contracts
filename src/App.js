@@ -10,6 +10,7 @@ import {
 import InfoProvider from './context/infoProvider';
 import Login from "./pages/login"
 import Contracts from "./pages/contracts"
+import CreateContract from './pages/createContract'
 
 
 function App() {
@@ -18,27 +19,12 @@ function App() {
 
       <InfoProvider>
 
-        {/* <ul>
-        <li>
-          <Link to="/">Login</Link>
-        </li>
-        <li>
-          <Link to="/contracts">Contratos</Link>
-        </li>
-        <li>
-          <Link to="/createContract">Criar contrato</Link>
-        </li>
-      </ul> */}
-
       <Routes> 
         <Route path="/" element={ <Login/> }/>
         <Route path="/contracts" element={ <Contracts/> } />
+        <Route path="/createContract" element={ <CreateContract/> } />
       </Routes>
       
-      {/* <Route path="/createContract">
-        <CreateContract/>
-      </Route> */}
-
       </InfoProvider>
 
     </BrowserRouter> 
