@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function FormCreateContract() {
+  const [ infoNewContract, setInfoNewContract ] = useState({})
 
   const countries = [ "Brasil", "Alemanha", "Portugal", "Escócia", "Canada", "Coreia" ]
   const companies = [1,2,3,4,5,6,7,8,9,10];
+
+  const handleChangeInputs = ({ target }) => {
+
+  }
+
+  const handleClicSelects = ({ target }) => {
+
+  }
+
+  const handleClickSubmit = () => {
+      
+  }
 
   return (
     <div>
@@ -28,11 +41,11 @@ function FormCreateContract() {
         <input type="text" name="city"/> 
       </label>
 
-      <label htmlFor="documentNumber"> Document Number: 
+      <label htmlFor="documentNumber"> * Document Number: 
         <input type="text" name="documentNumber"/> 
       </label>
 
-      <label htmlFor="socialReason"> social Reason: 
+      <label htmlFor="socialReason"> * social Reason: 
         <input type="text" name="socialReason"/>
       </label>
 
@@ -52,7 +65,7 @@ function FormCreateContract() {
         <input type="number" name="ZipCode"/>
       </label>
 
-      <label htmlFor="Email"> Email: 
+      <label htmlFor="Email"> * Email: 
         <input type="text" name="Email"/>
       </label>
 
@@ -69,7 +82,7 @@ function FormCreateContract() {
       </label>
 
       <label htmlFor="selectCompany"> select Company: 
-        <select name="selectCompany" id="">
+        <select name="selectCompany">
             <option value=""></option>
             {
               companies.map((comp) => {
