@@ -46,7 +46,7 @@ function Contracts() {
       </header>
 
       <div className="conteiner-contracts-results">
-        <FormSearch/>
+        {/* <FormSearch /> */}
         <Table/>
       </div>
 
