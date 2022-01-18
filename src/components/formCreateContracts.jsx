@@ -190,12 +190,11 @@ function FormCreateContract() {
       </label>
 
       <label htmlFor="company">
-        * Company:
+        Company:
         <select 
           name="company"
           value={ infoInputs.company }
           onChange={ handleChangeInputs }
-          required
         >
           <option value=""></option>
           {
