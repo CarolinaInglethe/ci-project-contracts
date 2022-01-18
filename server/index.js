@@ -29,12 +29,6 @@ app.post('/createContract', auth , controllersCreateContract);
 app.put('/contracts/:id', controllersUpdateContract );
 app.delete('/contracts/:id', controllersDeleteContract);
 
-// app.get('/api/greeting', (req, res) => {
-//   const name = req.query.name || 'World';
-//   res.setHeader('Content-Type', 'application/json');
-//   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
-// });
-
 // -----
 
 app.listen(PORT, () => {
