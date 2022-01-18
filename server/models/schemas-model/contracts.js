@@ -16,7 +16,7 @@ const contractsSchema = new mongoose.Schema({
     phone:{ type: Number },
     contractsStartsIn:{ type: Date },
     contractsEndsIn:{ type: Date },
-    selectCompany:{ typetype: Number },
+    selectCompany:{ type: Number },
 });
 
 const Contracts = connection.model('contracts', contractsSchema);
