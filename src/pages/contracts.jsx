@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import InfoContext from '../context/infoContext';
 import Table from '../components/table';
-import FormSearch from '../components/formSearch';
+// import FormSearch from '../components/formSearch';
 
 
 function Contracts() {
