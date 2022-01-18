@@ -1,29 +1,61 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
+import InfoContext from '../context/infoContext';
 
 function FormCreateContract() {
+  const navigate = useNavigate();
+  // --- stado local:
   const [ infoInputs, setInfoInputs ] = useState({
     country: "", state: "", city:"", documentNumber:"", socialReason:"",
     address:"", district:"", number:"", zipCode:"", email:"",
-    phone:"", contractsStartsIn:"", contractsEndsIn:"", selectCompany:""
+    phone:"", contractsStartsIn:"", contractsEndsIn:"", company:""
   })
-
   const countries = [ "Brasil", "Alemanha", "Portugal", "Escócia", "Canada", "Coreia" ]
-  const companies = [1,2,3,4,5,6,7,8,9,10];
+  const companies = [1,2,3,4,5,6,7,8,9,10]
+
+  // --- estado global:
+  const { infoUserContext, setAllContracts } = useContext(InfoContext)
+  // --
+  
 
   const handleChangeInputs = ({ target }) => {
     const { name, value } = target;
+
      setInfoInputs({
+       ...infoInputs,
        [name]: value,
      })
-    // console.log(infoInputs[name])
+     console.log(infoInputs)
   }
 
-  // const handleClicSelects = ({ target }) => {
+  const handleClickSubmit = async () => {
+    // console.log(infoInputs)
+    const headerAuth = {
+      headers: { 
+        "Content-Type": "application/json",
+        authorization: infoUserContext.token 
+      },
+    }
+    const body = infoInputs;
+    // cria contrato :
+    const reqCreateContract = await axios.post(
+    'http://localhost:3001/createContract', body, headerAuth)
+    .then((res) => res.data)
+    .catch((er) => er.message)
 
-  // }
+    if (!reqCreateContract.documentNumber) {
+      console.log(reqCreateContract)
+      return alert("ERRO: Não foi possivel criar o contrato, erro interno")
+    }
 
-  const handleClickSubmit = () => {
-      
+    // atualiza os contratos globais e na tabela:
+    const requestAllContracts = await axios.get('http://localhost:3001/contracts', headerAuth)
+    .then((res) => res.data)
+    .catch((err) => [])
+    setAllContracts(requestAllContracts);
+
+    return navigate('/contracts')
   }
 
   return (
@@ -32,14 +64,15 @@ function FormCreateContract() {
       <label htmlFor="country">
         * Country:
         <select 
-          name="contry"
+          name="country"
           value={ infoInputs.country }
           onChange={ handleChangeInputs }
+          required
         >
           <option value=""></option>
           {
-            countries.map((country) => {
-                return <option value={country}>{ country }</option>
+            countries.map((country, i) => {
+                return <option key={i} value={country}>{ country }</option>
             } )
           }
         </select>    
@@ -69,6 +102,7 @@ function FormCreateContract() {
           name="documentNumber"
           value={ infoInputs.documentNumber }
           onChange={ handleChangeInputs }
+          required
         /> 
       </label>
 
@@ -78,6 +112,7 @@ function FormCreateContract() {
           name="socialReason"
           value={ infoInputs.socialReason }
           onChange={ handleChangeInputs }
+          required
         />
       </label>
 
@@ -86,6 +121,7 @@ function FormCreateContract() {
           type="text" 
           name="address"
           value={ infoInputs.address }
+          onChange={ handleChangeInputs }
         /> 
       </label>
 
@@ -122,6 +158,7 @@ function FormCreateContract() {
           name="email"
           value={ infoInputs.email }
           onChange={ handleChangeInputs }
+          required
         />
       </label>
 
@@ -152,31 +189,31 @@ function FormCreateContract() {
         />
       </label>
 
-      <label htmlFor="selectCompany"> select Company: 
+      <label htmlFor="company">
+        * Company:
         <select 
-          name="selectCompany" 
-          value={ infoInputs.selectCompany }
-          onChange={ handleChangeInputs } 
+          name="company"
+          value={ infoInputs.company }
+          onChange={ handleChangeInputs }
+          required
         >
-            <option value=""></option>
-            {
-              companies.map((comp) => {
-                return <option value={comp}>{comp}</option>
-              })
-            }
-        </select>
+          <option value=""></option>
+          {
+            companies.map((comp, i) => {
+                return <option key={i} value={comp}>{ comp }</option>
+            } )
+          }
+        </select>    
       </label>
 
-      </form>
-      <footer>
-        <button 
+      <button 
           className="button-create-contract" 
           type="submit"
           onClick={ handleClickSubmit }
         >
           Criar
         </button>
-      </footer>
+      </form>
     </div>
   );
 };

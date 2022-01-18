@@ -6,17 +6,17 @@ const contractsSchema = new mongoose.Schema({
     country: { type: String  },
     state: { type: String }, 
     city:{ type: String },
-    documentNumber:{ type: Number },
-    socialReason:{ type: Number },
+    documentNumber:{ type: String },
+    socialReason:{ type: String },
     address:{ type: String },
     district:{ type: String },
-    number:{ type: Number },
-    zipCode:{ type: Number },
+    number:{ type: String },
+    zipCode:{ type: String },
     email:{ type: String },
-    phone:{ type: Number },
-    contractsStartsIn:{ type: Date },
-    contractsEndsIn:{ type: Date },
-    selectCompany:{ type: Number },
+    phone:{ type: String },
+    contractsStartsIn:{ type: String },
+    contractsEndsIn:{ type: String },
+    company: { type: String }
 });
 
 const Contracts = connection.model('contracts', contractsSchema);

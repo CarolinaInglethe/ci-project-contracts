@@ -16,7 +16,7 @@ module.exports = async (data) => {
     phone: data.phone,
     contractsStartsIn: data.contractsStartsIn,
     contractsEndsIn: data.contractsEndsIn,
-    selectCompany: data.selectCompany,
+    company: data.company
     })
     .then((insertedContract) => insertedContract)
     .catch((e) => null)
