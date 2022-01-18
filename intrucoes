@@ -1,11 +1,16 @@
   1° - npm install para installar dependencias;
+
   2° - sudo service mongod start (conecte mongodb);
+
   3° - pasta server / arquivo create-db...  - rodar script
- para gerar banco na maquina;
-  4° - {
-    npm start - roda apenas react
-    npm run dev - roda o react e o server juntos (preferencia)
-  }
+ para gerar banco na maquina( caso ainda não exista);
+
+  4° - npm run dev - roda o react e o server juntos
+  (react ira pedir para abrir em porta diferente do servidor 
+  , digite y(sim) );
+
+  6° - Agora é só esperar a página carregar no navegador 
+  e digitar seu login !
 
   5° -  para dar login digite  {
     username = Flexge

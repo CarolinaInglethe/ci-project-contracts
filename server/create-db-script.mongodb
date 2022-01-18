@@ -14,28 +14,22 @@ db.companies.insertMany([
 
 use('contractsFlexge');
 db.contracts.insertOne({
-    documentNumber: 000000699,
-    socialReason: 1,
-    company: 1,
-    distributor: 1,
-    adress: {
-      country: "EUA",
-      state: "Lans",
-      city: "misticFals",
-      address: "rua vertice",
-      distric: "Nort",
-      number:5,
-      zipCode:555,
-    },
-    contact: {
-      email: "gushab@hotmail.com",
-      phone: 15555,
-    },
-    dates: {
-      contractStarts: 01/01/2020,
-      contractsEnds: 05/05/2020,
-      dueDay: 05/05/2020
-    },
+    documentNumber: 00880077,
+    socialReason: 2,
+    company: 4,
+    distributor: 6,
+    country: "brasil",
+    state: "hhh",
+    city: "misticFals",
+    address: "rua manair",
+    distric: "sul",
+    number:5,
+    zipCode:555,
+    email: "gushab@hotmail.com",
+    phone: 15555,
+    contractStarts: 01/01/2020,
+    contractsEnds: 05/05/2020,
+    dueDay: 05/05/2020,
   });
 
 

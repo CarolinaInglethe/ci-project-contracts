@@ -1,21 +1,61 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
+import InfoContext from '../context/infoContext';
 
 function FormCreateContract() {
-  const [ infoNewContract, setInfoNewContract ] = useState({})
-
+  const navigate = useNavigate();
+  // --- stado local:
+  const [ infoInputs, setInfoInputs ] = useState({
+    country: "", state: "", city:"", documentNumber:"", socialReason:"",
+    address:"", district:"", number:"", zipCode:"", email:"",
+    phone:"", contractsStartsIn:"", contractsEndsIn:"", company:""
+  })
   const countries = [ "Brasil", "Alemanha", "Portugal", "Escócia", "Canada", "Coreia" ]
-  const companies = [1,2,3,4,5,6,7,8,9,10];
+  const companies = [1,2,3,4,5,6,7,8,9,10]
+
+  // --- estado global:
+  const { infoUserContext, setAllContracts } = useContext(InfoContext)
+  // --
+  
 
   const handleChangeInputs = ({ target }) => {
+    const { name, value } = target;
 
+     setInfoInputs({
+       ...infoInputs,
+       [name]: value,
+     })
+     console.log(infoInputs)
   }
 
-  const handleClicSelects = ({ target }) => {
+  const handleClickSubmit = async () => {
+    // console.log(infoInputs)
+    const headerAuth = {
+      headers: { 
+        "Content-Type": "application/json",
+        authorization: infoUserContext.token 
+      },
+    }
+    const body = infoInputs;
+    // cria contrato :
+    const reqCreateContract = await axios.post(
+    'http://localhost:3001/createContract', body, headerAuth)
+    .then((res) => res.data)
+    .catch((er) => er.message)
 
-  }
+    if (!reqCreateContract.documentNumber) {
+      console.log(reqCreateContract)
+      return alert("ERRO: Não foi possivel criar o contrato, erro interno")
+    }
 
-  const handleClickSubmit = () => {
-      
+    // atualiza os contratos globais e na tabela:
+    const requestAllContracts = await axios.get('http://localhost:3001/contracts', headerAuth)
+    .then((res) => res.data)
+    .catch((err) => [])
+    setAllContracts(requestAllContracts);
+
+    return navigate('/contracts')
   }
 
   return (
@@ -23,79 +63,156 @@ function FormCreateContract() {
       <form>
       <label htmlFor="country">
         * Country:
-        <select name="contry" >
+        <select 
+          name="country"
+          value={ infoInputs.country }
+          onChange={ handleChangeInputs }
+          required
+        >
           <option value=""></option>
           {
-            countries.map((country) => {
-                return <option value={country}>{ country }</option>
+            countries.map((country, i) => {
+                return <option key={i} value={country}>{ country }</option>
             } )
           }
         </select>    
       </label>
 
       <label htmlFor="state"> State: 
-        <input type="text" name="state"/> 
+        <input 
+          type="text" 
+          name="state" 
+          value={infoInputs.state}
+          onChange={ handleChangeInputs }
+        /> 
       </label>
 
       <label htmlFor="city"> city: 
-        <input type="text" name="city"/> 
+        <input 
+          type="text" 
+          name="city"
+          value={ infoInputs.city }
+          onChange={ handleChangeInputs }
+        /> 
       </label>
 
       <label htmlFor="documentNumber"> * Document Number: 
-        <input type="text" name="documentNumber"/> 
+        <input 
+          type="number" 
+          name="documentNumber"
+          value={ infoInputs.documentNumber }
+          onChange={ handleChangeInputs }
+          required
+        /> 
       </label>
 
       <label htmlFor="socialReason"> * social Reason: 
-        <input type="text" name="socialReason"/>
+        <input 
+          type="number" 
+          name="socialReason"
+          value={ infoInputs.socialReason }
+          onChange={ handleChangeInputs }
+          required
+        />
       </label>
 
-      <label htmlFor="Adress"> Adress: 
-        <input type="text" name="Adress"/> 
+      <label htmlFor="address"> Address: 
+        <input 
+          type="text" 
+          name="address"
+          value={ infoInputs.address }
+          onChange={ handleChangeInputs }
+        /> 
       </label>
 
       <label htmlFor="district"> district:
-       <input type="text" name="district"/>
+        <input 
+          type="text" 
+          name="district"
+          value={ infoInputs.district }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
-      <label htmlFor="Number"> Number: 
-        <input type="number" name="Number"/>
+      <label htmlFor="number"> Number: 
+        <input 
+          type="number" 
+          name="number"
+          value={ infoInputs.number }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
-      <label htmlFor="ZipCode"> Zip Code: 
-        <input type="number" name="ZipCode"/>
+      <label htmlFor="zipCode"> Zip Code: 
+        <input 
+          type="number"
+          name="zipCode"
+          value={ infoInputs.zipCode }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
-      <label htmlFor="Email"> * Email: 
-        <input type="text" name="Email"/>
+      <label htmlFor="email"> * Email: 
+        <input 
+          type="email" 
+          name="email"
+          value={ infoInputs.email }
+          onChange={ handleChangeInputs }
+          required
+        />
       </label>
 
-      <label htmlFor="Phone"> Phone: 
-        <input type="number" name="Phone"/>
+      <label htmlFor="phone"> Phone: 
+        <input 
+          type="number" 
+          name="phone"
+          value={ infoInputs.phone }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
       <label htmlFor="contractsStartsIn"> contracts Starts In: 
-        <input type="date" name="contractsStartsIn"/>
+        <input 
+          type="date" 
+          name="contractsStartsIn"
+          value={ infoInputs.contractsStartsIn }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
       <label htmlFor="ContractsEndsIn"> Contracts Ends In: 
-        <input type="date" name="ContractsEndsIn"/>
+        <input 
+          type="date" 
+          name="contractsEndsIn"
+          value={ infoInputs.contractsEndsIn }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
-      <label htmlFor="selectCompany"> select Company: 
-        <select name="selectCompany">
-            <option value=""></option>
-            {
-              companies.map((comp) => {
-                return <option value={comp}>{comp}</option>
-              })
-            }
-        </select>
+      <label htmlFor="company">
+        Company:
+        <select 
+          name="company"
+          value={ infoInputs.company }
+          onChange={ handleChangeInputs }
+        >
+          <option value=""></option>
+          {
+            companies.map((comp, i) => {
+                return <option key={i} value={comp}>{ comp }</option>
+            } )
+          }
+        </select>    
       </label>
 
+      <button 
+          className="button-create-contract" 
+          type="submit"
+          onClick={ handleClickSubmit }
+        >
+          Criar
+        </button>
       </form>
-      <footer>
-        <button className="button-create-contract" type="button">Criar</button>
-      </footer>
     </div>
   );
 };
