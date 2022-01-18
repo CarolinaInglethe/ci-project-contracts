@@ -18,24 +18,18 @@ db.contracts.insertOne({
     socialReason: 2,
     company: 4,
     distributor: 6,
-    adress: {
-      country: "brasil",
-      state: "hhh",
-      city: "misticFals",
-      address: "rua manair",
-      distric: "sul",
-      number:5,
-      zipCode:555,
-    },
-    contact: {
-      email: "gushab@hotmail.com",
-      phone: 15555,
-    },
-    dates: {
-      contractStarts: 01/01/2020,
-      contractsEnds: 05/05/2020,
-      dueDay: 05/05/2020
-    },
+    country: "brasil",
+    state: "hhh",
+    city: "misticFals",
+    address: "rua manair",
+    distric: "sul",
+    number:5,
+    zipCode:555,
+    email: "gushab@hotmail.com",
+    phone: 15555,
+    contractStarts: 01/01/2020,
+    contractsEnds: 05/05/2020,
+    dueDay: 05/05/2020,
   });
 
 

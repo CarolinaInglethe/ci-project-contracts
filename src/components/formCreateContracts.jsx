@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 
 function FormCreateContract() {
-  const [ infoNewContract, setInfoNewContract ] = useState({})
+  const [ infoInputs, setInfoInputs ] = useState({
+    country: "", state: "", city:"", documentNumber:"", socialReason:"",
+    address:"", district:"", number:"", zipCode:"", email:"",
+    phone:"", contractsStartsIn:"", contractsEndsIn:"", selectCompany:""
+  })
 
   const countries = [ "Brasil", "Alemanha", "Portugal", "Escócia", "Canada", "Coreia" ]
   const companies = [1,2,3,4,5,6,7,8,9,10];
 
   const handleChangeInputs = ({ target }) => {
-
+    const { name, value } = target;
+     setInfoInputs({
+       [name]: value,
+     })
+    // console.log(infoInputs[name])
   }
 
-  const handleClicSelects = ({ target }) => {
+  // const handleClicSelects = ({ target }) => {
 
-  }
+  // }
 
   const handleClickSubmit = () => {
       
@@ -23,7 +31,11 @@ function FormCreateContract() {
       <form>
       <label htmlFor="country">
         * Country:
-        <select name="contry" >
+        <select 
+          name="contry"
+          value={ infoInputs.country }
+          onChange={ handleChangeInputs }
+        >
           <option value=""></option>
           {
             countries.map((country) => {
@@ -34,55 +46,118 @@ function FormCreateContract() {
       </label>
 
       <label htmlFor="state"> State: 
-        <input type="text" name="state"/> 
+        <input 
+          type="text" 
+          name="state" 
+          value={infoInputs.state}
+          onChange={ handleChangeInputs }
+        /> 
       </label>
 
       <label htmlFor="city"> city: 
-        <input type="text" name="city"/> 
+        <input 
+          type="text" 
+          name="city"
+          value={ infoInputs.city }
+          onChange={ handleChangeInputs }
+        /> 
       </label>
 
       <label htmlFor="documentNumber"> * Document Number: 
-        <input type="text" name="documentNumber"/> 
+        <input 
+          type="number" 
+          name="documentNumber"
+          value={ infoInputs.documentNumber }
+          onChange={ handleChangeInputs }
+        /> 
       </label>
 
       <label htmlFor="socialReason"> * social Reason: 
-        <input type="text" name="socialReason"/>
+        <input 
+          type="number" 
+          name="socialReason"
+          value={ infoInputs.socialReason }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
-      <label htmlFor="Adress"> Adress: 
-        <input type="text" name="Adress"/> 
+      <label htmlFor="address"> Address: 
+        <input 
+          type="text" 
+          name="address"
+          value={ infoInputs.address }
+        /> 
       </label>
 
       <label htmlFor="district"> district:
-       <input type="text" name="district"/>
+        <input 
+          type="text" 
+          name="district"
+          value={ infoInputs.district }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
-      <label htmlFor="Number"> Number: 
-        <input type="number" name="Number"/>
+      <label htmlFor="number"> Number: 
+        <input 
+          type="number" 
+          name="number"
+          value={ infoInputs.number }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
-      <label htmlFor="ZipCode"> Zip Code: 
-        <input type="number" name="ZipCode"/>
+      <label htmlFor="zipCode"> Zip Code: 
+        <input 
+          type="number"
+          name="zipCode"
+          value={ infoInputs.zipCode }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
-      <label htmlFor="Email"> * Email: 
-        <input type="text" name="Email"/>
+      <label htmlFor="email"> * Email: 
+        <input 
+          type="email" 
+          name="email"
+          value={ infoInputs.email }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
-      <label htmlFor="Phone"> Phone: 
-        <input type="number" name="Phone"/>
+      <label htmlFor="phone"> Phone: 
+        <input 
+          type="number" 
+          name="phone"
+          value={ infoInputs.phone }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
       <label htmlFor="contractsStartsIn"> contracts Starts In: 
-        <input type="date" name="contractsStartsIn"/>
+        <input 
+          type="date" 
+          name="contractsStartsIn"
+          value={ infoInputs.contractsStartsIn }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
       <label htmlFor="ContractsEndsIn"> Contracts Ends In: 
-        <input type="date" name="ContractsEndsIn"/>
+        <input 
+          type="date" 
+          name="contractsEndsIn"
+          value={ infoInputs.contractsEndsIn }
+          onChange={ handleChangeInputs }
+        />
       </label>
 
       <label htmlFor="selectCompany"> select Company: 
-        <select name="selectCompany">
+        <select 
+          name="selectCompany" 
+          value={ infoInputs.selectCompany }
+          onChange={ handleChangeInputs } 
+        >
             <option value=""></option>
             {
               companies.map((comp) => {
@@ -94,7 +169,13 @@ function FormCreateContract() {
 
       </form>
       <footer>
-        <button className="button-create-contract" type="button">Criar</button>
+        <button 
+          className="button-create-contract" 
+          type="submit"
+          onClick={ handleClickSubmit }
+        >
+          Criar
+        </button>
       </footer>
     </div>
   );
